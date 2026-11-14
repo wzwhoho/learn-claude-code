@@ -830,7 +830,7 @@ class AgentSession:
 
 def make_live_session(workdir: Path) -> AgentSession:
     try:
-        from anthropic import Anthropic
+        from relay_client import RelayClient as Anthropic
         from dotenv import load_dotenv
     except ImportError as error:
         raise GoalError(

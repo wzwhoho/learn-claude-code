@@ -16,7 +16,7 @@ import subprocess
 from pathlib import Path
 
 import yaml
-from anthropic import Anthropic
+from relay_client import RelayClient as Anthropic
 from dotenv import load_dotenv
 
 try:

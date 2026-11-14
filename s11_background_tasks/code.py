@@ -31,7 +31,7 @@ try:
 except ImportError:
     pass
 
-from anthropic import Anthropic
+from relay_client import RelayClient as Anthropic
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
