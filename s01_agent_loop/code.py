@@ -30,6 +30,7 @@ Usage:
 """
 
 import os
+import sys
 import json
 import subprocess
 from types import SimpleNamespace
@@ -38,6 +39,12 @@ import httpx2 as httpx
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
+
+# Windows consoles default to GBK; model replies are UTF-8 (and may contain emoji).
+if os.name == "nt":
+    import ctypes
+    ctypes.windll.kernel32.SetConsoleOutputCP(65001)
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 # The relay speaks OpenAI Chat Completions, not the Anthropic protocol.
 BASE_URL = os.environ["ANTHROPIC_BASE_URL"].rstrip("/")
